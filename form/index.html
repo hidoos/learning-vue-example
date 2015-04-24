@@ -34,29 +34,29 @@
         <form action="#">
             <div class="vue-example">
                 <h2>输入框处理</h2>
-                <input type="text" v-model="msg" name="" id="">
+                <input type="text" v-model="msg" lazy name="" id="">
                 <div class="vue-example-result">
                     {{msg}}
                 </div>
             </div>
             <div class="vue-example">
                 <h2>复选框处理</h2>
-                <input type="checkbox" v-model="checked">
+                <input type="checkbox" v-model="checked" lazy>
                 <div class="vue-example-result">
                     {{checked?"yes":"no"}}
                 </div>
             </div>
             <div class="vue-example">
                 <h2>单选按钮处理</h2>
-                <input type="radio" name="picked" value="one" v-model="picked">
-                <input type="radio" name="picked" value="two" v-model="picked">
+                <input type="radio" name="picked" value="one" v-model="picked" lazy>
+                <input type="radio" name="picked" value="two" v-model="picked" lazy>
                 <div class="vue-example-result">
                     {{picked}}
                 </div>
             </div>
             <div class="vue-example">
                 <h2>下拉框处理</h2>
-                <select v-model="selected" name="" id="">
+                <select v-model="selected" lazy name="" id="">
                     <option value="one">one</option>
                     <option value="two">two</option>
                 </select>
@@ -64,15 +64,24 @@
                     {{selected}} 注意，单选的下拉框 option的value属性必须填写，不然不能通过vm获取到对于的data值
                 </div>
             </div>
+
             <div class="vue-example">
                 <h2>多选下拉框处理</h2>
-                <select v-model="multiSelected" multiple name="" id="">
+                <select v-model="multiSelected" lazy multiple name="" id="">
                     <option value="">one</option>
                     <option value="">two</option>
                     <option value="">three</option>
                 </select>
                 <div class="vue-example-result">
                     {{multiSelected}}
+                </div>
+            </div>
+
+              <div class="vue-example">
+                <h2>当作一个数来处理</h2>
+                <input v-model="age" number>
+                <div class="vue-example-result">
+                    {{age}}
                 </div>
             </div>
         </form>
@@ -89,7 +98,8 @@
             checked: true,
             picked: "one",
             selected: "one",
-            multiSelected: ["one", "three"]
+            multiSelected: ["one", "three"],
+            age:25
         }
     });
     </script>
