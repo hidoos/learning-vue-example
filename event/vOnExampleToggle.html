@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vuejs 事件指令 | v-on </title>
+    <style>
+    .active {
+        background-color: lightblue;
+    }
+    </style>
+</head>
+
+<body>
+    <h2> vuejs 事件指令 | v-on </h2>
+    <div id="demo">
+        <ul>
+            <li v-repeat="items" v-on="click:toggle(this)" class="{{done? 'active': ''}}">{{bookName}}</li>
+        </ul>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+    var vm = new Vue({
+        el: "#demo",
+        data: {
+            items: [{
+                bookName: "ruby on rails",
+                done: true
+            }, {
+                bookName: "Java in depth!",
+                done: false
+            }]
+        },
+        methods: {
+            toggle: function(item) {
+                item.done = !item.done;
+            }
+        }
+    });
+    </script>
+</body>
+
+</html>
