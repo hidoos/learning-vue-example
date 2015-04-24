@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vuejs的自定义指令</title>
+</head>
+
+<body>
+    <div id="demo" v-demo="lightblue : msg"></div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+    /**
+     * 指令的生命周期
+     */
+    Vue.directive('demo', {
+        bind: function() {
+            this.el.style.color = 'blue'
+            this.el.style.backgroundColor = this.arg
+        },
+        update: function(value) {
+            this.el.innerHTML =
+                'name - ' + this.name + '<br>' +
+                'raw - ' + this.raw + '<br>' +
+                'expression - ' + this.expression + '<br>' +
+                'argument - ' + this.arg + '<br>' +
+                'value - ' + value
+        }
+    })
+    var demo = new Vue({
+        el: '#demo',
+        data: {
+            msg: 'hello world!'
+        }
+    })
+    </script>
+</body>
+
+</html>
