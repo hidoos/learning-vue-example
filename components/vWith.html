@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vuejs 向子组件传递数据 | 显式数据传递 </title>
+</head>
+
+<body>
+    <h2> vuejs 向子组件传递数据 | 显式数据传递 </h2>
+    <div id="demo">
+        <div class="user-profile" v-component="user-profile" v-with="user"></div>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+    Vue.component("user-profile", {
+        template: '{{name}} <br/> {{email}}'
+    })
+
+    var demoVm = new Vue({
+        el: "#demo",
+        data: {
+            user: {
+                name: "hidoos",
+                email: "sk8huaban@gmail"
+            }
+        }
+    });
+    </script>
+</body>
+
+</html>

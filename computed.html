@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vuejs computed api</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{aPlus}}</p>
+        <input type="text" value="">
+    </div>
+</body>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+var vm = new Vue({
+    el: "#app",
+    data: {
+        a: 1
+    },
+    computed: {
+        aDoubule: function() {
+            return this.a * 2;
+        },
+        aPlus: {
+            get: function() {
+                return this.a + 2;
+            },
+            set: function(v) {
+                this.a = v - 1;
+            }
+        }
+    }
+});
+</script>
+
+</html>

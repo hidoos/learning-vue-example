@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vuejs 向子组件传递数据 | 向下传递单个属性 </title>
+</head>
+
+<body>
+    <h2> vuejs 向子组件传递数据 | paramAttributes 子组件内容用 paramAttributes 参数  </h2>
+    <div id="demo-3">
+        <input v-model="parentMsg">
+        <p>{{ parentMsg | uppercase | currency ￥ }}</p>
+        <div class="test" v-component="child-component" ></div>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+    var vm = new Vue({
+        el: '#demo-3',
+        data: {
+            parentMsg: 22
+        },
+        components: {
+            'child-component': {
+                paramAttributes: ['child-msg'],
+                // 连字符分隔的属性会被转成驼峰形式，
+                // 所以“child-msg”成了“this.childMsg”
+                template: '<span>{{childMsg}}</span>'
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>

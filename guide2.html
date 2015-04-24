@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>v-model</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <style>
+    #component {
+        border: 2px solid #ccc;
+        box-shadow: 2px 5px lightblue;
+        padding: 10px 20px;
+        height: 100px;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="demo">
+        <input type="text" v-model="message">
+        <p>{{message|UpperCase}}</p>
+        <button v-disable="disabled"> {{disabled ? "disabled": "submited"}}</button>
+        <div>
+            v-text
+            <p style="border:2px;background:lightblue" v-text="message"></p>
+        </div>
+        <div id="component" v-component="my-module">
+        </div>
+    </div>
+    <script>
+    // directive
+    Vue.directive('disable', {
+        update: function(value) {
+            console.log(this);
+            this.el.disabled = !!value;
+        }
+    });
+
+    /**
+     * Vue.component() 是一个类似 Vue.directive() 和 Vue.filter() 的资源注册方法。它作用是建立指定的构造函数与 ID 字符串间的关系，从而让 Vue.js 能在模板中使用它。直接向 Vue.component() 传递 options 时，它会在内部调用 Vue.extend()。
+     *
+     */
+
+    var module = Vue.extend({
+        template: "<h2>module {{title}}</h2>",
+        data: function() {
+            return {
+                title: 'Hello! vue component'
+            }
+        }
+    });
+
+
+    Vue.component("my-module", module);
+
+
+    var vm = new Vue({
+        el: "#demo",
+        data: {
+            message: "hello vuejs",
+            disabled: true
+        }
+    });
+
+    var module = new Vue({
+        el: "#component",
+        data: {
+            message: "component"
+        }
+    });
+    </script>
+</body>
+
+</html>

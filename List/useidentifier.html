@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>列表展示 | $value </title>
+</head>
+
+<body>
+    <h2> 列表展示 | $value   </h2>
+    <div id="demo">
+        <h2>hello {{name}}</h2>
+        <ul>
+            <li v-repeat="book:books">{{book.name}} - {{book.price}}</li>
+        </ul>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+    var vm = new Vue({
+        el: '#demo',
+        data: {
+            name: "hidoos",
+            books: [{
+                    name: "Learn JavaScript",
+                    price: "$10"
+                }, {
+                    name: "Ruby on Rails",
+                    price: "$20"
+                }, {
+
+                    name: "Java In Depth!",
+                    price: "$203"
+                }
+
+            ]
+        }
+    })
+    </script>
+</body>
+
+</html>

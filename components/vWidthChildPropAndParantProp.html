@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vuejs 向子组件传递数据 | 向下传递单个属性 </title>
+</head>
+
+<body>
+    <h2> vuejs 向子组件传递数据 | 向下传递单个属性 </h2>
+    <div id="demo">
+        <input v-model="parentMsg">
+        <div class="child" v-component="child" v-with="childMsg:parentMsg"></div>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+    var demoVm = new Vue({
+        el: "#demo",
+        data: {
+            parentMsg: "Inherited message"
+        },
+        components: {
+            child: {
+                template: '<span>{{childMsg}}</span>'
+            }
+        }
+    });
+    </script>
+</body>
+
+</html>
