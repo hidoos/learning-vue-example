@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vuejs 事件指令 | v-on </title>
+</head>
+
+<body>
+    <h2> vuejs 事件指令 | v-on </h2>
+    <div id="demo">
+        <div class="user-profile">
+            <a href="#" v-on="click:ClickHandler">Trigger a handler</a>
+            <a href="#" v-on="click:n++">Trigger an expression {{n}} </a>
+        </div>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+    var vm = new Vue({
+        el: "#demo",
+        data: {
+            n: 0
+        },
+        methods: {
+            ClickHandler: function(e) {
+                console.log("e.targetVM:", e.targetVM);
+                console.log("e.tagetVM === this:", e.targetVM === this);
+                console.log("The this of vm methods:", this);
+            }
+        }
+    });
+    </script>
+</body>
+
+</html>
