@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>是用paramAttribs暴露接口，使用插值表达式让父组件可以传递数据给子组件，组件之间的作用域是独立的</title>
+</head>
+
+<body>
+    <p>
+        是用paramAttribs暴露接口，使用插值表达式让父组件可以传递数据给子组件，组件之间的作用域是独立的
+    </p>
+    <div id="demo">
+        <h2>{{name}}</h2>
+        <div class="my-component" v-component="my-component" msg="{{msgFromParent}}"></div>
+    </div>
+    <script src="../node_modules/vue/dist/vue.min.js"></script>
+    <script>
+    var myComponent = Vue.extend({
+        template: "<p>child component {{msg}} + {{childMsg}}</p>",
+        paramAttributes: ["msg"],
+        data: function() {
+            return {
+                childMsg: "retrun data"
+            }
+        }
+    });
+
+    Vue.component("my-component", myComponent);
+
+    var vm = new Vue({
+        el: "#demo",
+        data: {
+            name: "parent component",
+            msgFromParent: "msgFromParent"
+        }
+    });
+    </script>
+</body>
+
+</html>
